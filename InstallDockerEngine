@@ -16,4 +16,7 @@ sudo systemctl start docker
 sudo systemctl status docker
 # add the normal user to the docker group to avoid using sudo each time
 sudo usermod -a -G docker ec2-user
+
+#get version both command ok
+docker version
 docker --version
