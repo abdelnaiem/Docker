@@ -1,3 +1,8 @@
+docker pull omage_name:version
+
 docker exec blissful_clarke /bin/cat /etc/profile
 
 docker logs container_name
+
+
+
