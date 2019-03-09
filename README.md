@@ -1,3 +1,5 @@
+Install docker-engine
+
 cd /etc/yum.repos.d
 
 create new repositry file docker.repo
