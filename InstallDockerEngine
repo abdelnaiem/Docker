@@ -10,5 +10,6 @@ gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 
 sudo yum update y
-
 sudo yum install docker-engine
+sudo systemctl enable docker
+sudo systemctl start docker
