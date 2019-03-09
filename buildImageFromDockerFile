@@ -1,0 +1,13 @@
+mkdir build
+vi Dockerfile
+
+# first docker file
+FROM ubuntu:xenial
+MAINTAINER Na3imo mahmoud.abdelnaiem@gmail.com
+RUN apt-get update -y
+RUN apt-get install -y telnet openssh-server python3
+
+Save the file
+
+# new repositry: abdelnaiem/ubuntupython
+docker build -t "abdelnaiem/ubuntupython:v1" .
