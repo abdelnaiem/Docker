@@ -1,6 +1,14 @@
 # create image that has no root privialges
 RUN useradd -ms /bin/bash user
-USER user
 
-# login as root for image that has no root user
-docker exec -u 0 -it bca366895605 /bin/bash
+# write /root
+RUN cd ~ && echo "" >asd.txt 
+
+# write in /home/user_home dir
+USER asd
+RUN cd ~ && echo "" >asd.txt 
+
+RUN run command while creating the base image
+CMD run the command as defualt cmmand if no command runs
+
+ENTRYPOINT apachectl "-DFOREGROUND"
