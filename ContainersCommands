@@ -13,18 +13,27 @@ docker login
 docker tag myfirstdockerimage:2 abdelnaiem/myfirstdockerimage:2
 docker push abdelnaiem/myfirstdockerimage:2
 
-
 # create container by name
-docker run -it --name="test_ssh" -p 8022:22 docker.io/centos:6 /bin/bash
+docker run -it --name="test_ssh" -p 8022:22 docker.io/centos:6 /bin/
 
+# rename container _name
+docker rename cont_name new_name
+
+# build docker file
+docker build -t "abdelnaiem/ubuntupython:v1" .
+
+docker run -it --name="test_ssh" -p 8022:22 docker.io/centos:6 /bin/bash
+docker run -itd --name="test_container"  docker.io/centos:6 /bin/bash
+
+# pull 
 docker pull omage_name:version
 
+# run command without login to container
 docker exec blissful_clarke /bin/cat /etc/profile
+# run commands as a root
+docker exec -u 0 -it bca366895605 /bin/bash
 
 docker logs container_name
-
-# login as root for image that has no root user
-docker exec -u 0 -it bca366895605 /bin/bash
 
 # get the running containers
 docker ps 
@@ -33,3 +42,18 @@ docker ps -a
 
 docker restart container_name_or_ID
 docker attach
+
+# docker network
+docker network ls
+docker network inspect network_id
+docker network create --subnet 10.1.0.0/24 --gateway 10.1.01.1 mybridge1
+docker network inspect mybridge1
+docker network rm mybridge1
+docker network remove mybridge1
+
+docker network create --subnet 10.10.0 --gateway 10.1.0.1 --ip-range=10.1.4.0/24 --driver=bridge --label=host4network bridge04
+
+driver = bridge or overdelay for cluster
+
+docker run -it --name nettets1 --net bridge04 --IP 10.1.4.100 centos:latest /bin/bash
+
