@@ -80,12 +80,24 @@ docker ps -a -q
 
 ### Removing container ###
 docker rm container
+-f force
+docker rm -f container_name:tag
+
 # remove all containers
 docker rm `docker ps -a -q`
+
 # remove the image file
 cd /var/lib/docker/containers
 remove the container
 systemctl restart
 
--f force
-docker rm -f container_name:tag
+#### Backup and restore images ####
+
+docker save img_name:version > file.tar
+docker save -o  file.tar img_name:version
+docker save --output  file.tar img_name:version
+
+docker load > file.tar
+docker load --input  file.tar
+
+###
