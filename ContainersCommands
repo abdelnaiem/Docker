@@ -1,4 +1,20 @@
-# create container by specific name
+#create image from container
+
+# 1- docker commit
+docker commit -m "message" container_id new_repositry_name:version
+docker commit -m "Na3imo Python" nostalgic_kilby myfirstdockerimage:2
+
+# 2- push it to docker hub
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+docker login
+docker tag myfirstdockerimage:2 abdelnaiem/myfirstdockerimage:2
+docker push abdelnaiem/myfirstdockerimage:2
+
+
+# create container by name
 docker run -it --name="test_ssh" -p 8022:22 docker.io/centos:6 /bin/bash
 
 docker pull omage_name:version
@@ -7,5 +23,13 @@ docker exec blissful_clarke /bin/cat /etc/profile
 
 docker logs container_name
 
+# login as root for image that has no root user
+docker exec -u 0 -it bca366895605 /bin/bash
 
+# get the running containers
+docker ps 
+# old running process
+docker ps -a
 
+docker restart container_name_or_ID
+docker attach
