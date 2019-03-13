@@ -71,3 +71,21 @@ docker events --filter event=stop --filter event=attach
 
 # Display resource usage statistics
 docker stats 
+
+# Display the running processes of a container
+docker top container
+
+# display all containers even not running and only display numeric IDs
+docker ps -a -q
+
+### Removing container ###
+docker rm container
+# remove all containers
+docker rm `docker ps -a -q`
+# remove the image file
+cd /var/lib/docker/containers
+remove the container
+systemctl restart
+
+-f force
+docker rm -f container_name:tag
