@@ -100,4 +100,10 @@ docker save --output  file.tar img_name:version
 docker load > file.tar
 docker load --input  file.tar
 
-###
+### history ####
+docker history img:version
+# more output
+docker history --no-trunck img:version
+# Only show numeric IDs
+docker history --quiet img
+docker history --quiet --no-trunc img
