@@ -57,3 +57,17 @@ driver = bridge or overdelay for cluster
 
 docker run -it --name nettets1 --net bridge04 --IP 10.1.4.100 centos:latest /bin/bash
 
+# add storage to container 
+-v volume_name
+-v local_volume:volume_name
+
+# image physical path at docker
+/var/lib/docker/volumes
+
+# monitoring docker
+docker start
+docker events -f container=6c1dfe2d4166
+docker events --filter event=stop --filter event=attach
+
+# Display resource usage statistics
+docker stats 
