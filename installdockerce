@@ -1,0 +1,26 @@
+sudo yum install -y lvm2 device-mapper-persistent-data 
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+Enable SELinux by modifying  /etc/sysconfig/selinux to be
+
+SELINUX=enforcing
+SELINUXTYPE=targeted
+then reboot
+
+yum install -q -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.64-1.el7.noarch.rpm
+
+sudo yum install docker-ce 
+
+Importing GPG key 0x621E9F35:
+ Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+ Fingerprint: 060a 61c5 1b55 8a7f 742b 77aa c52f eb6b 621e 9f35
+ From       : https://download.docker.com/linux/centos/gpg
+
+sudo systemctl enable docker
+
+sudo systemctl start  docker
+
+sudo docker run hello-world
+
+sudo usermod -a -G docker ec2-user
