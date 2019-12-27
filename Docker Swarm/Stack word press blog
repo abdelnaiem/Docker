@@ -1,0 +1,53 @@
+##
+docker swarm join-token worker
+##
+docker swarm join --token [TOKEN] [MANAGER_PRIVATE_IP]:2377
+
+##
+vi docker-compose.yml
+
+version: '3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     networks:
+       mysql_internal:
+         aliases: ["db"]
+     environment:
+       MYSQL_ROOT_PASSWORD: P4ssw0rd0!
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: P4ssw0rd0!
+
+   blog:
+     depends_on:
+       - db
+     image: wordpress:latest
+     networks:
+       mysql_internal:
+       wordpress_public:
+     ports:
+       - "80:80"
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: P4ssw0rd0!
+
+volumes:
+    db_data:
+networks:
+  mysql_internal:
+    internal: true
+  wordpress_public:
+  
+##
+ docker stack deploy --compose-file docker-compose.yml wp
+
+
+## Complete the Wordpress Setup
+keyboard_arrow_up
+Natviate to public IP of your manager node.
+
